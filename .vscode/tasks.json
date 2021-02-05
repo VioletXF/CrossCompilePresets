@@ -1,0 +1,107 @@
+{
+    "version": "2.0.0",
+    "tasks":[
+        // C++ macOS
+        {
+            "type":"shell",
+            "label":"Build C++ for macOS",
+            "command": "g++",
+            "args": [
+                "-std=c++17",
+                "-g",
+                "${file}",
+                "-o",
+                "${fileDirname}/macOS_${fileBasenameNoExtension}"
+            ],
+            "options":{
+                "cwd": "${workspaceFolder}"
+            },
+            "problemMatcher":"$gcc",
+            "group": "build",
+            "detail": "g++ c++17"
+        },
+        // C++ Win32
+        {
+            "type":"shell",
+            "label":"Build C++ for Win32",
+            "command": "i686-w64-mingw32-g++",
+            "args": [
+                "-static",
+                "-std=c++17",
+                "-g",
+                "${file}",
+                "-o",
+                "${fileDirname}/Win32_${fileBasenameNoExtension}.exe"
+            ],
+            "options":{
+                "cwd": "${workspaceFolder}"
+            },
+            "problemMatcher":"$gcc",
+            "group":"build",
+            "detail": "mingw c++17"
+        },
+        // C++ Win64
+        {
+            "type": "shell",
+            "label": "Build C++ for Win64",
+            "command": "x86_64-w64-mingw32-g++",
+            "args": [
+                "-static",
+                "-std=c++17",
+                "-g",
+                "${file}",
+                "-o",
+                "${fileDirname}/Win64_${fileBasenameNoExtension}.exe"
+            ],
+            "options": {
+                "cwd": "${workspaceFolder}"
+            },
+            "problemMatcher":"$gcc",
+            "group": "build",
+            "detail": "mingw c++17"
+        },
+        // Run C++ macOS
+        {
+            "type":"shell",
+            "label":"Run C++",
+            "command":"${fileDirname}/macOS_${fileBasenameNoExtension}",
+            "problemMatcher":"$gcc",
+            "group": "test"
+        },
+        // C# macOS
+        {
+            "type": "shell",
+            "label": "Build C# for macOS",
+            "command": "dotnet publish -c release -r osx-x64",
+            "group": "build"
+        },
+        // C# Win64
+        {
+            "type": "shell",
+            "label": "Build C# for Win64",
+            "command": "dotnet publish -c release -r win-x64",
+            "group": "build"
+        },
+        // C# Win32
+        {
+            "type": "shell",
+            "label": "Build C# for Win32",
+            "command": "dotnet publish -c release -r win-x86",
+            "group": "build"
+        },
+        // C# Linux x64
+        {
+            "type": "shell",
+            "label": "Build C# for Linux x64",
+            "command": "dotnet publish -c release -r linux-x64",
+            "group": "build"
+        },
+        // Run C#
+        {
+            "type": "shell",
+            "label": "run csharp",
+            "command": "dotnet run --project ${fileDirname}",
+            "group": "test"
+        }
+    ]
+}
